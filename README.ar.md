@@ -6,8 +6,8 @@
 🧠*تحويل الصور إلى نصوص وصفيّة باستخدام الذكاء الاصطناعي*  
 أداة ويب بسيطة لتحليل الصور وإنشاء أوصاف نصية باستخدام الذكاء الاصطناعي.
 
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Code-inks/AI-Eyes/README.md) 
-[![ar](https://img.shields.io/badge/lang-ar-yellow.svg)](https://github.com/Code-inks/AI-Eyes/README.ar.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Code-inks/AI-Eyes/blob/main/README.md) 
+[![ar](https://img.shields.io/badge/lang-ar-yellow.svg)](https://github.com/Code-inks/AI-Eyes/blob/main/README.ar.md)
 
 --- 
 

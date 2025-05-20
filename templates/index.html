@@ -1,0 +1,162 @@
+<!-- DOCTYPE declaration tells the browser this is an HTML5 document -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic meta tags for character set and responsive design -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page title shown in the browser tab -->
+  <title>AI Eye</title>
+
+  <!-- Favicon: small icon displayed next to the page title in the browser tab -->
+  <link rel="shortcut icon" href="static/favicon.png" type="image" />
+
+  <!-- Link to external CSS file that styles the webpage -->
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+  <!-- Main container div wraps all visible content on the page -->
+  <div class="container">
+    <!-- Main heading of the application -->
+    <h1>AI Eyes Image Analyzer</h1>
+
+    <!-- Upload container holds the form for uploading images -->
+    <div class="upload-container">
+      <!-- Form element for image upload; uses multipart/form-data encoding to allow binary file uploads -->
+      <form id="upload-form" enctype="multipart/form-data">
+        <!-- Wrapper div for styling the file input -->
+        <div class="wrap">
+          <!-- File input field where users select an image from their device -->
+          <input
+            id="file-input"
+            type="file"
+            name="image"
+            accept="image/*"
+            placeholder="upload image"
+            required
+          />
+        </div>
+
+        <!-- Line break between input and button -->
+        <br />
+
+        <!-- Button wrapper containing Analyze button and copy-to-clipboard icon -->
+        <div class="btn-copy">
+          <!-- Submit button triggers image analysis -->
+          <button type="submit">Analyze Image</button>
+
+          <!-- SVG icon representing "Copy to clipboard" functionality -->
+          <svg id="copy-icon" viewBox="0 0 448 512">
+            <path
+              d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"
+            />
+          </svg>
+        </div>
+      </form>
+
+      <!-- Container for previewing the uploaded image -->
+      <div id="preview-container">
+        <!-- img tag to show a preview of the selected image before upload -->
+        <img
+          id="image-preview"
+          src=""
+          alt="Image Preview"
+          style="display: none; max-width: 100%; margin-top: 20px"
+        />
+      </div>
+    </div>
+
+    <!-- Div where the AI analysis result will be displayed -->
+    <div id="result"></div>
+  </div>
+
+  <!-- JavaScript section starts here -->
+  <script>
+    // Ensures the DOM is fully loaded before running any script
+    document.addEventListener("DOMContentLoaded", function () {
+      // Select key elements by ID for later use
+      const form = document.getElementById("upload-form");
+      const fileInput = form.querySelector('input[type="file"]');
+      const preview = document.getElementById("image-preview");
+      const resultDiv = document.getElementById("result");
+
+      // IMAGE PREVIEW FUNCTIONALITY
+      // When user selects a file, read it and display a preview
+      fileInput.addEventListener("change", function (e) {
+        const file = e.target.files[0]; // Get the first selected file
+        if (file) {
+          const reader = new FileReader(); // Create a FileReader to read the file
+
+          // Once file is read, set its data as the image source
+          reader.onload = function (event) {
+            preview.src = event.target.result;
+            preview.style.display = "block"; // Show the preview
+          };
+
+          // Read the file as a Data URL (base64 encoded string)
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // FORM SUBMISSION HANDLER
+      // Prevent default form submission and send image to server via fetch API
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop the form from submitting normally
+
+        // Wrap form data into a FormData object to send files via POST request
+        const formData = new FormData(this);
+
+        // Display loading message while waiting for response
+        resultDiv.innerHTML = "<p>Analyzing image...</p>";
+
+        // Send POST request to '/analyze' endpoint
+        fetch("/analyze", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json()) // Parse JSON response
+          .then((data) => {
+            // Display the description returned by the server
+            resultDiv.innerHTML = `
+              <h3>Analysis Result:</h3>
+              <p class="description-text" id="analysis-text">${data.description}</p>
+            `;
+          })
+          .catch((error) => {
+            // Handle errors during fetch or parsing
+            console.error("Error:", error);
+            resultDiv.innerHTML = `
+              <h3>Error:</h3>
+              <p class="description-text">Failed to process image</p>
+            `;
+          });
+      });
+
+      // COPY TO CLIPBOARD FUNCTIONALITY
+      // When the copy icon is clicked, copy the analysis text to clipboard
+      document
+        .getElementById("copy-icon")
+        .addEventListener("click", function () {
+          // Get the analyzed text from the result div
+          const text = document.getElementById("analysis-text").innerText;
+          const icon = this;
+
+          // Use Clipboard API to copy text
+          navigator.clipboard.writeText(text).then(() => {
+            // If successful, add 'success' class to icon for visual feedback
+            icon.classList.add("success");
+
+            // Remove the success class after 2 seconds
+            setTimeout(() => icon.classList.remove("success"), 2000);
+          })
+          .catch((err) => {
+            // Alert if copying fails (e.g., permission denied)
+            alert("Failed to copy text: " + err.message);
+          });
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+/* static/style.css */
+/* Import a custom font called "Orbitron" from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron :wght@400;700&display=swap");
+
+/* Define reusable color variables using CSS Custom Properties (variables) */
+:root {
+  --white-01: #fff;           /* Pure white */
+  --white-02: #e2e8f0;        /* Light grayish white */
+  --white-04: #cbd5e1;        /* More grayish white */
+  --dark-07: #0f172a;         /* Very dark blue (almost black) */
+  --blue-04: #1e293b;         /* Dark blue-gray */
+  --green-05: #6fdc09;        /* Bright green for success feedback */
+  --gray-08: #64748b;         /* Medium gray */
+  --teal-04: #4fd1c5;         /* Light teal */
+  --teal-06: #38b2ac;         /* Slightly darker teal */
+}
+
+/* Reset default margin/padding and set global styles for body */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;                        /* Make sure body covers full screen height */
+  font-family: "Inter", sans-serif;         /* Use Inter as main font (fallback to sans-serif) */
+  background: linear-gradient(135deg, var(--dark-07) 0%, var(--blue-04) 100%); /* Background gradient */
+  color: var(--white-02);                   /* Default text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;                 /* Center everything vertically and horizontally */
+}
+
+/* Style for button + copy icon container */
+.btn-copy {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 2rem;                                /* Space between button and icon */
+}
+
+/* Styling for the SVG copy icon */
+#copy-icon {
+  height: 1.6rem;                           /* Set size of the icon */
+  fill: var(--white-01);                    /* Color of the icon */
+  transition: transform 0.2s ease, opacity 0.3s ease; /* Smooth animation when hovered */
+}
+
+/* Add visual feedback on hover */
+#copy-icon:hover {
+  transform: scale(1.1);                    /* Slightly enlarge the icon */
+}
+
+/* Success state style for the copy icon */
+#copy-icon.success {
+  fill: var(--green-05);                    /* Change icon color to green when copy is successful */
+}
+
+/* Main container box in the center of the page */
+.container {
+  background: rgba(255, 255, 255, 0.05);    /* Semi-transparent white background */
+  border-radius: 16px;                      /* Rounded corners */
+  padding: 32px;                            /* Inner spacing */
+  margin: 20px;                             /* Outer spacing */
+  backdrop-filter: blur(12px);              /* Blur background behind the container */
+  -webkit-backdrop-filter: blur(12px);      /* Safari compatibility */
+  border: 1px solid rgba(148, 163, 184, 0.2); /* Thin light border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  width: 100%;
+  max-width: 600px;                         /* Limit maximum width */
+  animation: fadeIn 1s ease-in-out;         /* Fade-in animation */
+  position: relative;                       /* Needed for layout positioning */
+  overflow: hidden;                         /* Hide anything outside container */
+}
+
+/* Title at the top of the app */
+h1 {
+  text-align: center;                       /* Centered heading */
+  font-size: 2rem;                          /* Large font size */
+  margin-bottom: 24px;                      /* Spacing below title */
+  color: #f8fafc;                           /* Light white color */
+  font-weight: 700;                         /* Bold weight */
+  letter-spacing: 0.5px;                    /* Slight spacing between letters */
+  position: relative;                       /* Allows z-index stacking */
+  z-index: 1;                               /* Bring above background effects */
+}
+
+/* Upload area where users drag/drop or click to upload image */
+.upload-container {
+  border: 2px dashed var(--gray-08);        /* Dashed border */
+  border-radius: 12px;                      /* Rounded corners */
+  padding: 32px 20px;                       /* Padding inside */
+  text-align: center;                       /* Center content */
+  transition: all 0.3s ease;                /* Smooth transitions */
+  background: rgba(100, 116, 139, 0.05);    /* Subtle background */
+  position: relative;                       /* Needed for layout */
+  margin: 20px 0;                           /* Vertical spacing */
+  cursor: pointer;                          /* Show hand cursor on hover */
+  min-height: 180px;                        /* Minimum height for consistency */
+}
+
+/* Hover effect for upload container */
+.upload-container:hover {
+  border-color: var(--teal-04);             /* Change border color on hover */
+  background: rgba(79, 209, 197, 0.05);     /* Light teal background on hover */
+  box-shadow: 0 0 15px rgba(79, 209, 197, 0.2); /* Glow effect */
+}
+
+/* File input button styling */
+#file-input {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--teal-04), var(--teal-06)); /* Gradient background */
+  color: #0f172a;                            /* Dark text */
+  font-weight: 600;                          /* Slightly bold */
+  cursor: pointer;                           /* Hand cursor */
+  transition: all 0.3s ease;                 /* Smooth animations */
+  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.3); /* Shadow */
+  border: none;                              /* Remove default browser border */
+  font-family: inherit;                      /* Match parent font */
+  font-size: 1rem;                           /* Consistent size */
+}
+
+/* Form styling */
+#upload-form {
+  margin-top: 24px;                          /* Space above form */
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--teal-04), var(--teal-06));
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.3);
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Button hover effect */
+button[type="submit"]:hover {
+  transform: translateY(-2px);              /* Lift up slightly */
+  box-shadow: 0 6px 16px rgba(79, 209, 197, 0.4); /* Stronger shadow */
+}
+
+/* Button active (pressed) state */
+button[type="submit"]:active {
+  transform: translateY(0);                 /* Snap back down when pressed */
+}
+
+/* Container for previewing uploaded image */
+#preview-container {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(100, 116, 139, 0.05);
+  padding: 12px;
+  min-height: 200px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+/* Image preview styling */
+#image-preview {
+  width: 100%;                              /* Fill container */
+  height: auto;                             /* Keep aspect ratio */
+  display: none;                            /* Hidden by default */
+  border-radius: 8px;                       /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: opacity 0.3s ease;            /* Fade-in effect */
+}
+
+/* Result box for AI-generated description */
+#result {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(100, 116, 139, 0.05);    /* Faint background */
+  border-radius: 12px;
+  border-left: 4px solid var(--teal-04);    /* Highlighted left border */
+  transition: all 0.3s ease;
+  min-height: 120px;                        /* Ensure enough space even if empty */
+}
+
+/* Description text styling */
+.description-text {
+  font-size: 20px;
+  color: var(--white-02);                   /* Light gray text */
+  line-height: 1.6;                         /* Readable spacing between lines */
+  margin-top: 8px;
+  white-space: pre-wrap;                    /* Preserve spaces and wrap text */
+  font-weight: 500;                         /* Slightly bold */
+}
+
+/* Status messages like "Analyzing..." */
+.status-message {
+  font-size: 0.95rem;
+  color: var(--white-04);                   /* Lighter gray than main text */
+  margin-top: 8px;
+  font-style: italic;                       /* Italic style */
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);            /* Start from below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);               /* End at normal position */
+  }
+}
+
+/* Keyframe animation for slide-up effect (unused here but available) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 1.5rem;                       /* Smaller heading */
+  }
+
+  .file-label,
+  button[type="submit"] {
+    width: 100%;                             /* Full width buttons */
+    text-align: center;
+  }
+
+  .upload-container {
+    padding: 24px 16px;                      /* Adjust padding */
+  }
+}

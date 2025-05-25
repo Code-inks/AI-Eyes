@@ -131,8 +131,8 @@ ai-eyes/
 ## 📬 **للتواصل**  
 المساهمات مرحب بها دائمًا:  
 🌟 مريم - [maryam]  
-🌟 حساب GitHub: [@Code-inks](https://github.com/Code-inks/)  
-🌟 رابط المشروع: [Code-inks/AI-Eyes](https://github.com/Code-inks/AI-Eyes/)  
+🌟 حساب GitHub: [@MaryamBinabdullah](https://github.com/Code-inks/)  
+🌟 رابط المشروع: [MaryamBinabdullah/AI-Eyes](https://github.com/MaryamBinabdullah/AI-Eyes/)  
 
 > حاولت جعل الكود منظما وواضحا مع وجود تعليقات توضيحية في قدر الأماكن  
 > لا تنسَ إعطاء المشروع نجمة ⭐️ إذا أعجبك!  

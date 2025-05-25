@@ -122,9 +122,9 @@ Feel free to improve my work and do share with me any updates :smile: !!
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 - Maryam dev - [maryam]
-- Find me on github [@Code-inks]
+- Find me on github [@MaryamBinabdullah]
 
-Project Link: [Code-inks/AI-Eyes/](https://github.com/Code-inks/AI-Eyes/)
+Project Link: [MaryamBinabdullah/AI-Eyes/](https://github.com/MaryamBinabdullah/AI-Eyes/)
 
 - I hope my codes aren't a big mess i tried to keep the whole thing tidy and to point as much as possible
 - you'll find some comments here and there explaning how things work

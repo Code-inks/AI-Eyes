@@ -5,8 +5,8 @@
 
 A simple web tool that analyzes images and generates descriptive text using AI that works fully offline. 
 
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Code-inks/AI-Eyes/blob/main/README.md) 
-[![ar](https://img.shields.io/badge/lang-ar-yellow.svg)](https://github.com/Code-inks/AI-Eyes/blob/main/README.ar.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/MaryamBinabdullah/AI-Eyes/blob/main/README.md) 
+[![ar](https://img.shields.io/badge/lang-ar-yellow.svg)](https://github.com/MaryamBinabdullah/AI-Eyes/blob/main/README.ar.md)
 ---
 ## ⚙️ **Built with**  
 

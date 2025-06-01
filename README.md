@@ -61,7 +61,7 @@ Before you begin, ensure you have:
 ### 1. **Clone the Repository or Download the ZIP**  
 I suggest that you Place the file in a short directory path `DriveName:\subs\PlaceFoldereHere`
 ```bash
-git clone https://github.com/Code-inks/AI-Eyes/
+git clone https://github.com/MaryamBinabdullah/AI-Eyes/
 ```
 
 ### 2. **Install Dependencies**  

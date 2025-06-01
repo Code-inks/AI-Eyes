@@ -69,7 +69,7 @@
 يفضل وضع المجلد في هذا الامتداد 
 `DriveName:\subs\PlaceFoldereHere` 
 ```bash  
-git clone https://github.com/Code-inks/AI-Eyes/ 
+git clone https://github.com/MaryamBinabdullah/AI-Eyes/ 
 ```  
 
 ### 2. **تثبيت التبعيات**  

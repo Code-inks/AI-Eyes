@@ -22,6 +22,7 @@ body {
   min-height: 100vh;                        /* Make sure body covers full screen height */
   font-family: "Inter", sans-serif;         /* Use Inter as main font (fallback to sans-serif) */
   background: linear-gradient(135deg, var(--dark-07) 0%, var(--blue-04) 100%); /* Background gradient */
+  background-attachment: fixed; 
   color: var(--white-02);                   /* Default text color */
   display: flex;
   align-items: center;
